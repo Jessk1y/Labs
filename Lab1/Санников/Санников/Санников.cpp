@@ -8,7 +8,6 @@
 
 using namespace std;
 
-// Function to validate numerical input
 template <typename T>
 T getValidInput(const string& prompt) {
     T value;
@@ -26,7 +25,6 @@ T getValidInput(const string& prompt) {
     }
 }
 
-// Function to validate positive numerical input
 template <typename T>
 T getValidPositiveInput(const string& prompt) {
     T value;
@@ -41,7 +39,6 @@ T getValidPositiveInput(const string& prompt) {
     }
 }
 
-// Structure for Pipe
 struct Pipe {
     string kilometerMark;
     double length;
@@ -93,7 +90,7 @@ struct Pipe {
 
     void loadFromFile(ifstream& file) {
         string line;
-        getline(file, line); // Read "Pipe_Start"
+        getline(file, line);
         if (line != "Pipe_Start") {
             return;
         }
@@ -108,13 +105,12 @@ struct Pipe {
 
 
         getline(file, line);
-        isInRepair = (line.substr(line.find(":") + 2) == "1"); // read and set boolean value
+        isInRepair = (line.substr(line.find(":") + 2) == "1");
 
-        getline(file, line); // Read "Pipe_End"
+        getline(file, line);
     }
 };
 
-// Structure for Compressor Station (CS)
 struct CompressorStation {
     string name;
     int totalWorkshops;
@@ -179,7 +175,7 @@ struct CompressorStation {
 
     void loadFromFile(ifstream& file) {
         string line;
-        getline(file, line); // Read "CS_Start"
+        getline(file, line);
         if (line != "CS_Start") {
             return;
         }
@@ -198,15 +194,15 @@ struct CompressorStation {
         getline(file, line);
         efficiency = stod(line.substr(line.find(":") + 2));
 
-        getline(file, line); // Read "CS_End"
+        getline(file, line);
     }
 };
 
-// Global vectors to store pipes and CSs
+
 vector<Pipe> pipes;
 vector<CompressorStation> css;
 
-// Function to display menu
+
 void displayMenu() {
     cout << "\nMenu:" << endl;
     cout << "1. Add Pipe" << endl;
@@ -220,7 +216,7 @@ void displayMenu() {
     cout << "Enter your choice: ";
 }
 
-// Function to add a new pipe
+
 void addPipe() {
     Pipe newPipe;
     newPipe.readFromConsole();
@@ -228,7 +224,7 @@ void addPipe() {
     cout << "Pipe added." << endl;
 }
 
-// Function to add a new CS
+
 void addCS() {
     CompressorStation newCS;
     newCS.readFromConsole();
@@ -237,7 +233,7 @@ void addCS() {
 }
 
 
-// Function to view all objects
+
 void viewAllObjects() {
     cout << "\nPipes:\n";
     for (size_t i = 0; i < pipes.size(); ++i) {
@@ -252,7 +248,7 @@ void viewAllObjects() {
         cout << "----------\n";
     }
 }
-// Function to edit a pipe's repair status
+
 void editPipe() {
     if (pipes.empty()) {
         cout << "No pipes to edit." << endl;
@@ -287,7 +283,7 @@ void editPipe() {
     cout << "Pipe status updated." << endl;
 }
 
-// Function to edit a CS's workshops
+
 void editCS() {
     if (css.empty()) {
         cout << "No CSs to edit." << endl;
@@ -328,7 +324,7 @@ void editCS() {
     }
 
 }
-// Function to save data to file
+
 void saveData() {
     if (pipes.empty() && css.empty()) {
         cout << "Nothing to save. No pipes or CSs have been added." << endl;
@@ -374,7 +370,7 @@ void saveData() {
 
 }
 
-// Function to load data from file
+
 void loadData() {
     pipes.clear();
     css.clear();

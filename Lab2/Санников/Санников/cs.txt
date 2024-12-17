@@ -1,7 +1,0 @@
-Number of CSs: 1
-CS_Start
-CS Name: Cs1
-Total Workshops: 100
-Workshops in Work: 99
-Efficiency: 50
-CS_End
